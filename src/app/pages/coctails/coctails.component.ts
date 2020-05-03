@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Drinks } from 'src/app/core/interfaces';
+import { Drinks, Drink } from 'src/app/core/interfaces';
 import { DrinksService } from 'src/app/core/services/drinks/drinks.service';
 import { Subject } from 'rxjs';
 
@@ -9,25 +9,32 @@ import { Subject } from 'rxjs';
   styleUrls: ['./coctails.component.scss']
 })
 export class CoctailsComponent implements OnInit {
-  listCoctails: Array<Drinks>;
+  listCoctails: Array<Drink>;
+  cocktail: Drink;
 
   // private unsubscribe = new Subject();
 
   constructor(
-    // private drinksServise: DrinksService
+    private drinksServise: DrinksService
   ) { }
 
   ngOnInit(): void {
-    // this.getTodos()
+    this.getTodos('a')
   }
-  // private getTodos(): void {
-  //   this.drinksServise.getDrinks()
-  //     .subscribe(data => {
-  //       console.log(data)
-  //       this.listCoctails = data;
-  //     },
-  //       error => console.error(error)
-  //     )
-  // }
+  getTodos(leter: string): void {
+    this.drinksServise.getDrinks(leter)
+      .subscribe(data => {
+        this.listCoctails = data.drinks;
+        console.log(this.listCoctails)
+      },
+        error => console.error(error)
+      )
+  }
+  private getCocktail(idDrink: number): void {
+    this.drinksServise.getDrinkData(idDrink)
+      .subscribe((data) => {
+        this.cocktail = data;
+      })
+  }
 
 }

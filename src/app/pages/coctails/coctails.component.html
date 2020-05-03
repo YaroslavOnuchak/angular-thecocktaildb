@@ -1,6 +1,31 @@
 <p>coctailsfewfwefws works!</p>
+<button type="button" class="btn btn-primary">Primary</button>
 
+<b (click)="getTodos('a')"> a</b>
+<b (click)="getTodos('b')"> b</b>
+<b (click)="getTodos('c')"> b</b>
+<b (click)="getTodos('d')"> b</b>
+<b (click)="getTodos('e')"> b</b>
+<b (click)="getTodos('f')"> b</b>
+<b (click)="getTodos('g')"> b</b>
+<b (click)="getTodos('h')"> b</b>
+<b (click)="getTodos('i')"> b</b>
+<b (click)="getTodos('j')"> b</b>
+<b (click)="getTodos('k')"> b</b>
+<b (click)="getTodos('l')"> b</b>
 
-<app-coctail-item
-    *ngFor="let item of listCoctails"
-    [drink]=item></app-coctail-item>
+<div class="container">
+
+    fdf
+    <router-outlet></router-outlet>
+
+    <div class="row row-cols-sm-2 row-cols-md-3 w-100 justify-content-center ">
+        <app-coctail-item 
+        class="col mb-4" 
+            *ngFor="let item of listCoctails"
+            [drink]=item></app-coctail-item>
+
+    </div>
+
+</div>
+

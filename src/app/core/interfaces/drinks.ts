@@ -1,4 +1,8 @@
 export class Drinks {
+    drinks: Array<Drink>
+}
+
+export class Drink {
     idDrink: number;
     strDrink: string;
     strDrinkAlternate: string;
