@@ -7,6 +7,8 @@ import { HeaderComponent } from './coponents/header/header.component';
 import { NavbarComponent } from './coponents/navbar/navbar.component';
 import { MainComponent } from './coponents/main/main.component';
 import { FooterComponent } from './coponents/footer/footer.component';
+import { CoctailsComponent } from './pages/coctails/coctails.component';
+import { CoctailItemComponent } from './pages/coctails/coctail-item/coctail-item.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { FooterComponent } from './coponents/footer/footer.component';
     HeaderComponent,
     NavbarComponent,
     MainComponent,
-    FooterComponent
+    FooterComponent,
+    CoctailsComponent,
+    CoctailItemComponent
   ],
   imports: [
     BrowserModule,
