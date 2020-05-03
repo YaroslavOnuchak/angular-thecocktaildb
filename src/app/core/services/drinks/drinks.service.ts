@@ -10,13 +10,18 @@ import { Drinks, Drink } from '../../interfaces';
 export class DrinksService {
 
   private url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=`;
+  private urlStrAlcoholic = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=`;
 
   constructor(
     private http: HttpClient
   ) { }
-  getDrinks(leter: string): Observable<Drinks> {
+  getDrinksByLetter(leter: string): Observable<Drinks> {
     return this.http.get<Drinks>(`${this.url}${leter}`)
   }
+  getDrinksStrAlcoholic(word: string): Observable<Drinks> {
+    return this.http.get<Drinks>(`${this.urlStrAlcoholic}${word}`)
+  }
+
   getDrinkData(idDrink: number): Observable<Drink> {
     return this.http.get<Drink>(`${this.url}/${idDrink}`);
   }
