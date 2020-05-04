@@ -1,18 +1,26 @@
-<p>coctails works!</p>
-
-<p>here is {{countCocktails}} coctails</p>
-<b
-    *ngFor="let item of arrFirstLetter"
-    (click)="getDrinksByLetter(item)">{{item}}/ </b>
-
 <div class="container">
-    <router-outlet></router-outlet>
-    <div class="row row-cols-sm-4 row-cols-md-6 w-100  ">
+    <p>here is {{countCocktails}} coctails</p>
+
+    <div class="d-flex wrap-radio">
+        <div
+            *ngFor="let item of arrFirstLetter">
+            <input
+                class="form-check-input d-none"
+                type="radio"
+                name="inlineRadioOptions"
+                id={{item}} value="option1">
+            <label
+                class="form-check-label"
+                (click)="getDrinksByLetter(item)"
+                for="{{item}}">{{item}}</label>
+        </div>
+    </div>
+
+    <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4  w-100 wrap-cocktails ">
         <app-coctail-item
-            class="col mb-4"
+            class="col p-0"
             *ngFor="let item of listCocktails"
             [drink]=item></app-coctail-item>
-
-            <h3 *ngIf=!listCocktails>these Cocktails don't exist</h3>
+        <h3 *ngIf=!listCocktails>these Cocktails don't exist</h3>
     </div>
 </div>

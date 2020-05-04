@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Drinks, Drink } from 'src/app/core/interfaces';
 import { DrinksService } from 'src/app/core/services/drinks/drinks.service';
 import { Subject } from 'rxjs';
@@ -10,17 +10,18 @@ import { Subject } from 'rxjs';
 })
 export class CoctailsComponent implements OnInit {
   public listCocktails: Array<Drink> = [];
-  cocktail: Drink;
   public arrFirstLetter = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-  // public arStrAlcoholic = ['Alcoholic', 'Non_alcoholic', 'Optional_alcohol']
-  public countCocktails: number;
   
+  cocktail: Drink;
+
+  public countCocktails: number;
+
 
   // private unsubscribe = new Subject();
 
   constructor(
     private drinksServise: DrinksService,
-    private el: ElementRef
+
 
 
   ) { }
@@ -31,15 +32,12 @@ export class CoctailsComponent implements OnInit {
     // this.getTodos3()
   }
   getDrinksByLetter(letter: string): void {
-    this.el.nativeElement.style.textShadow = `0 2px 5px red`;
-
     this.drinksServise.getDrinksByLetter(letter)
       .subscribe(data => {
-        this.listCocktails= data.drinks;
-        if(!this.listCocktails){
+        this.listCocktails = data.drinks;
+        if (!this.listCocktails) {
           console.log(this.listCocktails)
           this.countCocktails = 0;
-
         }
         this.countCocktails = this.listCocktails.length
       },
