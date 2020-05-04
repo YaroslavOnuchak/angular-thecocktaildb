@@ -15,12 +15,17 @@ export class DrinksService {
   constructor(
     private http: HttpClient
   ) { }
-  getDrinksByLetter(leter: string): Observable<Drinks> {
-    return this.http.get<Drinks>(`${this.url}${leter}`)
+  getDrinksByLetter(letter: string): Observable<Drinks> {
+    return this.http.get<Drinks>(`${this.url}${letter}`)
   }
   getDrinksStrAlcoholic(word: string): Observable<Drinks> {
     return this.http.get<Drinks>(`${this.urlStrAlcoholic}${word}`)
   }
+
+
+
+
+  
 
   getDrinkData(idDrink: number): Observable<Drink> {
     return this.http.get<Drink>(`${this.url}/${idDrink}`);

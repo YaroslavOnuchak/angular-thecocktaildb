@@ -9,10 +9,12 @@ import { Subject } from 'rxjs';
   styleUrls: ['./coctails.component.scss']
 })
 export class CoctailsComponent implements OnInit {
-  public listCoctails: Array<Drink> = [];
+  public listCocktails: Array<Drink> = [];
   cocktail: Drink;
-  public mass = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+  public arrFirstLetter = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
   // public arStrAlcoholic = ['Alcoholic', 'Non_alcoholic', 'Optional_alcohol']
+  public countCocktails: number;
+  
 
   // private unsubscribe = new Subject();
 
@@ -28,28 +30,33 @@ export class CoctailsComponent implements OnInit {
     this.getDrinksAll()
     // this.getTodos3()
   }
-  getDrinks(leter: string): void {
+  getDrinksByLetter(letter: string): void {
     this.el.nativeElement.style.textShadow = `0 2px 5px red`;
-    this.drinksServise.getDrinksByLetter(leter)
+
+    this.drinksServise.getDrinksByLetter(letter)
       .subscribe(data => {
-        this.listCoctails = data.drinks;
-        console.log(this.listCoctails)
+        this.listCocktails= data.drinks;
+        if(!this.listCocktails){
+          console.log(this.listCocktails)
+          this.countCocktails = 0;
+
+        }
+        this.countCocktails = this.listCocktails.length
       },
         error => console.error(error)
       )
   }
 
   getDrinksAll(): void {
-    this.mass.forEach(el =>
+    this.arrFirstLetter.forEach(el =>
       this.drinksServise.getDrinksByLetter(el)
         .subscribe(data => {
-          data.drinks.forEach(ele => this.listCoctails.push(ele))
-          console.log(this.listCoctails)
+          data.drinks.forEach(ele => this.listCocktails.push(ele))
+          this.countCocktails = this.listCocktails.length
         },
           error => console.error(error)
         ))
-    this.listCoctails.sort()
-
+    this.listCocktails.sort()
   }
 
 

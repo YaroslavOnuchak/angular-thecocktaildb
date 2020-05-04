@@ -1,16 +1,18 @@
 <p>coctails works!</p>
 
-<p>here is {{listCoctails.length}} coctails</p>
+<p>here is {{countCocktails}} coctails</p>
 <b
-    *ngFor="let item of mass"
-    (click)="getDrinks(item)">{{item}}/ </b>
+    *ngFor="let item of arrFirstLetter"
+    (click)="getDrinksByLetter(item)">{{item}}/ </b>
 
 <div class="container">
     <router-outlet></router-outlet>
     <div class="row row-cols-sm-4 row-cols-md-6 w-100  ">
         <app-coctail-item
             class="col mb-4"
-            *ngFor="let item of listCoctails"
+            *ngFor="let item of listCocktails"
             [drink]=item></app-coctail-item>
+
+            <h3 *ngIf=!listCocktails>these Cocktails don't exist</h3>
     </div>
 </div>
