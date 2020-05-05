@@ -21,9 +21,11 @@ body {
             -ms-transition    : .5s;
             -o-transition     : .5s;
 
-            p {
+            .white-text {
                 opacity: 0;
                 color  : white;
+                border : 1px solid white;
+                padding: .5rem;
             }
 
             &:hover {
@@ -31,10 +33,11 @@ body {
                 text-align      : center;
                 align-items     : center;
 
-                p {
+                .white-text {
                     opacity        : 1;
                     font-weight    : 700;
                     text-decoration: underline;
+
                 }
 
             }

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CoctailItemComponent } from './coctail-item.component';
+import { CoctailItemComponent } from './cocktail-item.component';
 
 describe('CoctailItemComponent', () => {
   let component: CoctailItemComponent;

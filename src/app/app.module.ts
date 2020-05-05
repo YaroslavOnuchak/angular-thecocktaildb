@@ -8,11 +8,12 @@ import { HeaderComponent } from './coponents/header/header.component';
 import { NavbarComponent } from './coponents/navbar/navbar.component';
 import { MainComponent } from './coponents/main/main.component';
 import { FooterComponent } from './coponents/footer/footer.component';
-import { CoctailsComponent } from './pages/coctails/coctails.component';
-import { CoctailItemComponent } from './pages/coctails/coctail-item/coctail-item.component';
+import { CoctailsComponent } from './pages/cocktails/cocktails.component';
+import { CoctailItemComponent } from './pages/cocktails/cocktail-item/cocktail-item.component';
 import { IngredientsComponent } from './pages/ingredients/ingredients.component';
 import { IngredientsItemComponent } from './pages/ingredients/ingredients-item/ingredients-item.component';
 import { DoublePageComponent } from './pages/double-page/double-page.component';
+import { CocktailInfoComponent } from './pages/cocktails/cocktail-info/cocktail-info.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DoublePageComponent } from './pages/double-page/double-page.component';
     CoctailItemComponent,
     IngredientsComponent,
     IngredientsItemComponent,
-    DoublePageComponent
+    DoublePageComponent,
+    CocktailInfoComponent
   ],
   imports: [
     BrowserModule,

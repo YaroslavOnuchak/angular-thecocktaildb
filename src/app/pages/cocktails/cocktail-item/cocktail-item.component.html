@@ -1,7 +1,8 @@
 <div class="card h-100 m-0 card-item">
-
     <div class="maska ">
-        <p class="white-text">read more</p>
+        <a class="btn  white-text"
+            routerLink='{{drink.idDrink}}'
+            routerLinkActive="router-link-active">More Details</a>
     </div>
     <img
         src="{{drink.strDrinkThumb}}/preview"
@@ -9,8 +10,5 @@
         alt="...">
     <div class="card-body p-0">
         <p>{{drink.strDrink}}</p>
-        <!--   <a class="btn btn-primary"
-                    routerLink={{item.id}}
-                    routerLinkActive="router-link-active">More Details</a> -->
     </div>
 </div>

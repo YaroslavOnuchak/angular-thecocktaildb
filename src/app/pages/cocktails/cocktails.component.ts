@@ -5,13 +5,13 @@ import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-coctails',
-  templateUrl: './coctails.component.html',
-  styleUrls: ['./coctails.component.scss']
+  templateUrl: './cocktails.component.html',
+  styleUrls: ['./cocktails.component.scss']
 })
 export class CoctailsComponent implements OnInit {
   public listCocktails: Array<Drink> = [];
   public arrFirstLetter = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-  
+
   cocktail: Drink;
 
   public countCocktails: number;
@@ -20,9 +20,7 @@ export class CoctailsComponent implements OnInit {
   // private unsubscribe = new Subject();
 
   constructor(
-    private drinksServise: DrinksService,
-
-
+    private drinksServise: DrinksService
 
   ) { }
 
@@ -55,15 +53,6 @@ export class CoctailsComponent implements OnInit {
           error => console.error(error)
         ))
     this.listCocktails.sort()
+    console.log(this.listCocktails)
   }
-
-
-
-  private getCocktail(idDrink: number): void {
-    this.drinksServise.getDrinkData(idDrink)
-      .subscribe((data) => {
-        this.cocktail = data;
-      })
-  }
-
 }
