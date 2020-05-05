@@ -122,6 +122,10 @@
               "devServerTarget": "the-best-Cocktails:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
