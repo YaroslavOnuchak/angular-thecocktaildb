@@ -1,9 +1,11 @@
-<div class="container">
-    <p>here is {{listIngredients.length}} Ingredients</p>
-    <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 w-100 ">
-        <app-ingredients-item
-            class="col p-0"
-            *ngFor="let item of listIngredients"
-            [ingredient]=item></app-ingredients-item>
+<div class="component-page">
+    <div class="container">
+        <p>Total: {{listIngredients.length}} Ingredient(s)</p>
+        <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 w-100 wrap-box">
+            <app-ingredients-item
+                class="col p-0"
+                *ngFor="let item of listIngredients"
+                [ingredient]=item></app-ingredients-item>
+        </div>
     </div>
 </div>

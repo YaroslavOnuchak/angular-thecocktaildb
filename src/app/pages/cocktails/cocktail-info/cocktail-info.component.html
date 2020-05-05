@@ -1,21 +1,23 @@
-<div class="container">
+<div class="container"
+    *ngFor="let item of cocktail">
     <div class="row no-gutters">
         <div class="col-md-4">
             <img
-                src='{{cocktail.strDrinkThumb}}'
+                src='{{item.strDrinkThumb}}'
                 class="card-img-top"
                 alt="...">
             <p class="card-text p-2"> </p>
         </div>
         <div class="col-md-8">
             <div class="card-body">
-                <h5 class="card-title">{{cocktail.strDrink}}</h5>
-                <p class="card-text ">{{cocktail.strInstructions}}</p>
-                <p class="card-text p-1">  cocktail</p>
+                <h5 class="card-title">{{item.strDrink}}</h5>
+                <p class="card-text ">{{item.strInstructions}}</p>
+                <p class="card-text p-1">...</p>
             </div>
         </div>
     </div>
-    <!-- </div>
+</div>
+<!--
 dateModified: "2016-10-05 12:36:28"
 idDrink: "15346"
 strAlcoholic: "Alcoholic"

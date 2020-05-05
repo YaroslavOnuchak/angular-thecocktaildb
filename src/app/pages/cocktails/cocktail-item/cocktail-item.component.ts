@@ -8,6 +8,7 @@ import { Drinks, Drink } from 'src/app/core/interfaces';
 })
 export class CoctailItemComponent implements OnInit {
   @Input() drink: Drink
+
   constructor() { }
 
   ngOnInit(): void {

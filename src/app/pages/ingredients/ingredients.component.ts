@@ -12,7 +12,7 @@ export class IngredientsComponent implements OnInit {
   public listIngredients: Array<Ingredient> = [];
 
   private ingredientId: number = 1;
-  private maxLengthArrayIngredients: number = 1000;
+  private maxLengthArrayIngredients: number = 600;
 
   constructor(
     private ingredientsServise: IngredientsService
@@ -22,16 +22,17 @@ export class IngredientsComponent implements OnInit {
     this.getIngredientsAll()
   }
   getIngredientsAll(): void {
-    console.log("11111111", this.listIngredients)
+    // console.log("11111111", this.listIngredients)
     while (this.maxLengthArrayIngredients > this.ingredientId) {
       this.ingredientsServise.getIngredientsById(this.ingredientId)
         .subscribe(data => {
           if (data.ingredients !== null) {
-            this.listIngredients.push(data.ingredients[0])
-            console.log('11', this.listIngredients)
+            data.ingredients.forEach(el =>
+              this.listIngredients.push(el))
+            // console.log('11', this.listIngredients)
           }
           // // this.listIngredients = data.ingredients
-          // console.log("22222222222", data.ingredients !== null)
+          console.log("22222222222", data.ingredients)
         },
           error => console.error(error)
         )

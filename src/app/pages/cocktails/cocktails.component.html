@@ -1,4 +1,4 @@
-<div class="container">
+<div class="component-page">
     <p>here is {{countCocktails}} coctails</p>
 
     <div class="d-flex wrap-radio">
@@ -15,12 +15,14 @@
                 for="{{item}}">{{item}}</label>
         </div>
     </div>
+    <div class="container">
+        <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5  w-100 wrap-box ">
 
-    <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-6  w-100 wrap-cocktails ">
-        <app-coctail-item
-            class="col p-0"
-            *ngFor="let item of listCocktails"
-            [drink]=item></app-coctail-item>
-        <h3 *ngIf=!listCocktails>these Cocktails don't exist</h3>
+            <app-coctail-item
+                class="col p-0"
+                *ngFor="let item of listCocktails"
+                [drink]=item></app-coctail-item>
+            <h3 *ngIf=!listCocktails>these Cocktails don't exist</h3>
+        </div>
     </div>
 </div>

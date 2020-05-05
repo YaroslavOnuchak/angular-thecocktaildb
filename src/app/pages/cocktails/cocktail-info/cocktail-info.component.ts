@@ -11,7 +11,7 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./cocktail-info.component.scss']
 })
 export class CocktailInfoComponent implements OnInit, OnDestroy {
-  public cocktail: Drink;
+  public cocktail: Array<Drink>;
 
   private unsubscribe = new Subject();
 
@@ -36,11 +36,12 @@ export class CocktailInfoComponent implements OnInit, OnDestroy {
         });
     console.log('info', this.cocktail)
   }
+
   private getCocktail(idDrink: number): void {
     this.drinksServise.getDrinkInfo(idDrink)
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((data) => {
-        this.cocktail = data.drinks[0];
+        this.cocktail = data.drinks;
         console.log('info2', data.drinks)
       })
 

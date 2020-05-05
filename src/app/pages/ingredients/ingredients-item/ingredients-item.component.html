@@ -1,6 +1,9 @@
 <div class="card h-100 m-0 card-item">
     <div class="maska ">
-        <p class="white-text">read more</p>
+        <a class="white-text"
+
+            routerLink='{{ingredient.idIngredient}}'
+            routerLinkActive="router-link-active">More Details</a>
     </div>
     <img
         src="https://www.thecocktaildb.com/images/ingredients/{{ingredient.strIngredient}}-Medium.png"
@@ -9,7 +12,6 @@
     <div class="card-body p-0">
         <p>{{ingredient.strIngredient}} </p>
         <!--   <a class="btn btn-primary"
-                    routerLink={{item.id}}
                     routerLinkActive="router-link-active">More Details</a> -->
     </div>
 

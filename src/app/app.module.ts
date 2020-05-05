@@ -14,6 +14,8 @@ import { IngredientsComponent } from './pages/ingredients/ingredients.component'
 import { IngredientsItemComponent } from './pages/ingredients/ingredients-item/ingredients-item.component';
 import { DoublePageComponent } from './pages/double-page/double-page.component';
 import { CocktailInfoComponent } from './pages/cocktails/cocktail-info/cocktail-info.component';
+import { IngredientInfoComponent } from './pages/ingredients/ingredient-info/ingredient-info.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { CocktailInfoComponent } from './pages/cocktails/cocktail-info/cocktail-
     IngredientsComponent,
     IngredientsItemComponent,
     DoublePageComponent,
-    CocktailInfoComponent
+    CocktailInfoComponent,
+    IngredientInfoComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
