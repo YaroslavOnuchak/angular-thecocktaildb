@@ -1,5 +1,5 @@
 <div class="component-page">
-    <p>here is {{countCocktails}} coctails</p>
+    <p>Total: {{countCocktails}} cocktail(s)</p>
 
     <div class="d-flex wrap-radio">
         <div
@@ -16,11 +16,56 @@
         </div>
     </div>
     <div class="container">
-        <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5  w-100 wrap-box ">
+        <form class="col">
+            <div class="radio-wrap">
+                <div class="custom-control custom-radio custom-control-inline low">
+                    <input class="custom-control-input"
+                        type="radio"
+                        id="radioInline1"
+                        name="searchPriority"
+                        [(ngModel)]="alco"
+                        value="Alcoholic" />
+                    <label class="custom-control-label" for="radioInline1">Alcoholic</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline medium">
+                    <input class="custom-control-input"
+                        type="radio"
+                        id="radioInline2"
+                        name="searchPriority"
+                        [(ngModel)]="alco"
+                        value="Non alcoholic" />
+                    <label class="custom-control-label" for="radioInline2">Non alcoholic</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline hight">
+                    <input class="custom-control-input"
+                        type="radio"
+                        id="radioInline3"
+                        name="searchPriority"
+                        [(ngModel)]="alco"
+                        value="Optional alcohol" />
+                    <label class="custom-control-label" for="radioInline3">Optional alcohol</label>
+                </div>
 
+                <div class="custom-control custom-radio custom-control-inline all">
+                    <input
+                        type="radio"
+                        id="radioInline4"
+                        name="searchPriority"
+                        class="custom-control-input"
+                        [(ngModel)]="alco"
+                        value="all" />
+                    <label class="custom-control-label" for="radioInline4">All</label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="container">
+        <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5  w-100 wrap-box ">
             <app-coctail-item
                 class="col p-0"
-                *ngFor="let item of listCocktails"
+                *ngFor="let item of listCocktails | filterByAlcoholic:alco"
                 [drink]=item></app-coctail-item>
             <h3 *ngIf=!listCocktails>these Cocktails don't exist</h3>
         </div>

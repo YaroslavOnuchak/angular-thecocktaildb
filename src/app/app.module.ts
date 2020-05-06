@@ -13,9 +13,11 @@ import { CoctailItemComponent } from './pages/cocktails/cocktail-item/cocktail-i
 import { IngredientsComponent } from './pages/ingredients/ingredients.component';
 import { IngredientsItemComponent } from './pages/ingredients/ingredients-item/ingredients-item.component';
 import { DoublePageComponent } from './pages/double-page/double-page.component';
-import { CocktailInfoComponent } from './pages/cocktails/cocktail-info/cocktail-info.component';
-import { IngredientInfoComponent } from './pages/ingredients/ingredient-info/ingredient-info.component';
+
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { ItemInfoComponent } from './pages/item-info/item-info.component';
+import { FilterByAlcoholicPipe } from './shared/pipes/filterByAlcoholic/filter-by-alcoholic.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,14 +31,15 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     IngredientsComponent,
     IngredientsItemComponent,
     DoublePageComponent,
-    CocktailInfoComponent,
-    IngredientInfoComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ItemInfoComponent,
+    FilterByAlcoholicPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

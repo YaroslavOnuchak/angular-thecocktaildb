@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Drinks, Drink } from 'src/app/core/interfaces';
 import { DrinksService } from 'src/app/core/services/drinks/drinks.service';
-import { Subject } from 'rxjs';
+import { FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-coctails',
@@ -15,9 +16,8 @@ export class CoctailsComponent implements OnInit {
   cocktail: Drink;
 
   public countCocktails: number;
+  public alco: string;
 
-
-  // private unsubscribe = new Subject();
 
   constructor(
     private drinksServise: DrinksService
@@ -25,16 +25,14 @@ export class CoctailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.getTodos('a')
     this.getDrinksAll()
-    // this.getTodos3()
   }
   getDrinksByLetter(letter: string): void {
     this.drinksServise.getDrinksByLetter(letter)
       .subscribe(data => {
         this.listCocktails = data.drinks;
         if (!this.listCocktails) {
-          console.log(this.listCocktails)
+          // console.log(this.listCocktails)
           this.countCocktails = 0;
         }
         this.countCocktails = this.listCocktails.length

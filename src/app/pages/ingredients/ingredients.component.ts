@@ -12,7 +12,7 @@ export class IngredientsComponent implements OnInit {
   public listIngredients: Array<Ingredient> = [];
 
   private ingredientId: number = 1;
-  private maxLengthArrayIngredients: number = 600;
+  private maxLengthArrayIngredients: number = 1000;
 
   constructor(
     private ingredientsServise: IngredientsService
@@ -32,7 +32,7 @@ export class IngredientsComponent implements OnInit {
             // console.log('11', this.listIngredients)
           }
           // // this.listIngredients = data.ingredients
-          console.log("22222222222", data.ingredients)
+          // console.log("22222222222", data.ingredients)
         },
           error => console.error(error)
         )
