@@ -8,6 +8,7 @@ import { Ingredients, Ingredient } from '../../interfaces';
 })
 export class IngredientsService {
   private url = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid='
+  private urlByname = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?i='
   constructor(
     private http: HttpClient
   ) { }
@@ -16,6 +17,9 @@ export class IngredientsService {
   // }
   getIngredientsById(idIngredient: number): Observable<Ingredients> {
     return this.http.get<Ingredients>(`${this.url}${idIngredient}`)
+  }
+  getIngredientsList(ingientName: string): Observable<Ingredients> {
+    return this.http.get<Ingredients>(`${this.urlByname}${ingientName}`)
   }
 
 

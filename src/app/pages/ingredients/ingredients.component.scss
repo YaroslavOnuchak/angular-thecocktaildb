@@ -1,5 +1,11 @@
 :host {
     min-width: 50%;
 
-    box-shadow: 0 0 20px lightskyblue;
+    box-shadow: 0 0 20px grey;
+
+    .card-body {
+        text-align: center;
+        font-size : .7rem;
+        padding   : .7rem;
+    }
 }

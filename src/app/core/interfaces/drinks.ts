@@ -1,6 +1,14 @@
 export class Drinks {
     drinks: Array<Drink>
 }
+export class DrinksFilter {
+    drinks: Array<DrinkFillter>
+}
+export class DrinkFillter {
+    strDrink: string;
+    strDrinkThumb: string;
+    idDrink: number;
+}
 
 export class Drink {
     idDrink: number;

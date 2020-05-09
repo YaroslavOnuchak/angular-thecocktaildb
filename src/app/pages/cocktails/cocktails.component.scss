@@ -1,7 +1,6 @@
 :host {
-    min-width: 50%;
-
-    box-shadow: 0 0 20px lightskyblue;
+    min-width : 50%;
+    box-shadow: 0 0 20px grey;
 
     .wrap-radio {
         flex-wrap      : wrap;
@@ -20,13 +19,13 @@
         }
 
         input:checked+label {
-            text-shadow      : 0 2px 5px green;
-            transform        : scale(1.2);
-            -webkit-transform: scale(1.2);
-            -moz-transform   : scale(1.2);
-            -ms-transform    : scale(1.2);
-            -o-transform     : scale(1.2);
-
+            text-shadow                 : 0 2px 5px green;
+          
+                    transform        : scale(1.2);
+                    -webkit-transform: scale(1.2);
+                    -moz-transform   : scale(1.2);
+                    -ms-transform    : scale(1.2);
+                    -o-transform     : scale(1.2);
         }
     }
 }

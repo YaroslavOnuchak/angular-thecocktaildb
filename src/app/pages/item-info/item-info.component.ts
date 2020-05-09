@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 
-import { Drink, Ingredient } from 'src/app/core/interfaces';
+import { Drink, Ingredient, DrinkFillter } from 'src/app/core/interfaces';
 import { DrinksService } from 'src/app/core/services/drinks/drinks.service';
 import { IngredientsService } from 'src/app/core/services/ingredients/ingredients.service';
 
@@ -15,6 +15,9 @@ import { IngredientsService } from 'src/app/core/services/ingredients/ingredient
 export class ItemInfoComponent implements OnInit, OnDestroy {
   public cocktail: Array<Drink>;
   public ingredientInfo: Array<Ingredient>
+  public listCocktail: Array<DrinkFillter>
+  public listIngrediends: Array<Ingredient> = []
+  private listIngrediendStrIngredient: Array<any> = []
 
   private unsubscribe = new Subject();
 
@@ -39,28 +42,67 @@ export class ItemInfoComponent implements OnInit, OnDestroy {
         params => {
           this.getCocktail(params.id)
           this.getIngredientId(params.id)
-          console.log('param', params)
+
+          // console.log('param', params)
         });
   }
 
-  private getCocktail(idDrink: number): void {
+  getCocktail(idDrink: number): void {
     this.drinksServise.getDrinkInfo(idDrink)
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((data) => {
         this.cocktail = data.drinks;
-        console.log('info2', data.drinks)
+        console.log('rere', this.cocktail[0]);
+        this.getlistIngrediendName(this.cocktail[0]);
+
+
+        // for (let i = 1; i < 16; i++) {
+        // }
       })
   }
   private getIngredientId(idIngredient: number): void {
     this.ingredientsService.getIngredientsById(idIngredient)
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((data) => {
-        console.log('info2', data.ingredients)
+        // console.log('info2', data.ingredients)
         this.ingredientInfo = data.ingredients
+
         // data.ingredients.forEach(el =>
         //   this.ingredientInfo.push(el))
       })
+  }
+  private checkCocktrailByIngredient(strIngredient: string): void {
+    this.drinksServise.getDrinksByIngrediend(strIngredient)
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe((data) => {
+        this.listCocktail = data.drinks;
+      })
+  }
+  public getlistIngrediendName(obj: Drink): void {
+    for (let key in obj) {
+      this.listIngrediendStrIngredient.push(key)
+    }
+    this.listIngrediendStrIngredient = this.listIngrediendStrIngredient.slice(21, 36)
+    console.log('1', this.listIngrediendStrIngredient)
+    this.getListIngrediend(this.listIngrediendStrIngredient)
+
 
   }
+  getListIngrediend(ingientName: Array<string>): void {
+    ingientName.forEach(el =>
+      this.ingredientsService.getIngredientsList(el)
+        .pipe(takeUntil(this.unsubscribe))
+        .subscribe((data) => {
+          console.log('rere2', data)
+
+
+
+          // for (let i = 1; i < 16; i++) {
+          // }
+        })
+    )
+
+  }
+
 
 }

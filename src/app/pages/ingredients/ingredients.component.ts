@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Ingredient, Ingredients } from 'src/app/core/interfaces';
 import { IngredientsService } from 'src/app/core/services/ingredients/ingredients.service';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 
 @Component({
   selector: 'app-ingredients',
@@ -8,31 +11,42 @@ import { IngredientsService } from 'src/app/core/services/ingredients/ingredient
   styleUrls: ['./ingredients.component.scss']
 })
 export class IngredientsComponent implements OnInit {
-  // public listIngredients: Ingredients
   public listIngredients: Array<Ingredient> = [];
+  public returnedArray: Array<Ingredient>
+  public count: number;
 
   private ingredientId: number = 1;
   private maxLengthArrayIngredients: number = 1000;
+  private unsubscribe = new Subject();
+
 
   constructor(
     private ingredientsServise: IngredientsService
   ) { }
 
   ngOnInit(): void {
+    this.returnedArray = this.listIngredients.slice(0, 10);
     this.getIngredientsAll()
   }
-  getIngredientsAll(): void {
+  pageChanged(event: PageChangedEvent): void {
+    const startItem = (event.page - 1) * event.itemsPerPage;
+    const endItem = event.page * event.itemsPerPage;
+    this.returnedArray = this.listIngredients.slice(startItem, endItem);
+    this.count = this.returnedArray.length
+  }
+  async getIngredientsAll(): Promise<void> {
     // console.log("11111111", this.listIngredients)
     while (this.maxLengthArrayIngredients > this.ingredientId) {
-      this.ingredientsServise.getIngredientsById(this.ingredientId)
+      const res = await this.ingredientsServise.getIngredientsById(this.ingredientId)
+        .pipe(takeUntil(this.unsubscribe))
         .subscribe(data => {
           if (data.ingredients !== null) {
             data.ingredients.forEach(el =>
               this.listIngredients.push(el))
-            // console.log('11', this.listIngredients)
+
           }
-          // // this.listIngredients = data.ingredients
-          // console.log("22222222222", data.ingredients)
+          this.returnedArray = this.listIngredients.slice(0, 40);
+          this.count = this.returnedArray.length
         },
           error => console.error(error)
         )

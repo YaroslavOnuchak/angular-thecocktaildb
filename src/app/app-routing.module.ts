@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'cocktails/:id', redirectTo: 'double-page/:id' },
   { path: 'ingredients/:id', redirectTo: 'double-page/:id' },
   { path: 'double-page/:id', component: ItemInfoComponent },
+  // { path: 'double-page/id:id', redirectTo: 'ingredients/:id' },
   { path: '**', component: PageNotFoundComponent }
 ];
 

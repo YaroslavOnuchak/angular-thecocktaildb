@@ -1,14 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Rye', 'Merriweather';
 
     // component-page
     .wrap-box {
-        margin: 0 auto;
+        display        : flex;
+        justify-content: space-evenly;
+
+        .card-body {
+            position   : relative;
+            text-align : center;
+            font-size  : .8rem;
+            padding-top: .7rem;
+            font-weight: bold;
+        }
 
         .card-item {
-            position: relative;
-
+            position : relative;
+            max-width: 200px;
 
             .maska {
                 display           : flex;
@@ -47,15 +56,20 @@ body {
                         text-decoration: underline;
 
                     }
-
                 }
-
             }
-
-
-
         }
     }
+}
+
+.sticky {
+    background: #fff;
+    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, .08);
+    position  : fixed;
+    top       : 0;
+    height    : 50px;
+    width     : 100%;
+    z-index   : 22;
 }
 
 .wrap-box {

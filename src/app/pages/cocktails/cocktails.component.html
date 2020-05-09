@@ -1,5 +1,5 @@
 <div class="component-page">
-    <p>Total: {{countCocktails}} cocktail(s)</p>
+    <p class='text-right mr-3'>Total: {{(count)}} / {{listCocktails.length}} cocktail(s)</p>
 
     <div class="d-flex wrap-radio">
         <div
@@ -62,12 +62,53 @@
 
 
     <div class="container">
-        <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-5  w-100 wrap-box ">
-            <app-coctail-item
-                class="col p-0"
-                *ngFor="let item of listCocktails | filterByAlcoholic:alco"
-                [drink]=item></app-coctail-item>
-            <h3 *ngIf=!listCocktails>these Cocktails don't exist</h3>
+        <pagination
+            class=" justify-content-center"
+            [totalItems]="listCocktails.length"
+            [maxSize]="3"
+            responsive='false'
+            [itemsPerPage]='40'
+            previousText="&lsaquo;"
+            nextText="&rsaquo;" firstText="&laquo;"
+            lastText="&raquo;"
+            [boundaryLinks]="true"
+            rotate='true'
+            (pageChanged)=" pageChanged($event)">
+        </pagination>
+        <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4  wrap-box">
+
+            <div *ngFor="let content of returnedArray|filterByAlcoholic:alco"
+                class="card card-item  content-wrapper">
+                <div class=" h-100  card-item">
+                    <div class="maska ">
+                        <a class="white-text"
+                            routerLink='{{content.idDrink}}'
+                            routerLinkActive="router-link-active">More Details</a>
+                    </div>
+                    <img
+                        src="{{content.strDrinkThumb}}/preview"
+                        class="card-img-top"
+                        alt="...">
+                    <div class="card-body pb-0 ">
+                        <p>{{content.strDrink}}</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
+        <pagination
+            class=" justify-content-center align-bottom"
+            [totalItems]="listCocktails.length"
+            [maxSize]="3"
+            responsive='false'
+            [itemsPerPage]='40'
+            previousText="&lsaquo;"
+            nextText="&rsaquo;" firstText="&laquo;"
+            lastText="&raquo;"
+            [boundaryLinks]="true"
+            rotate='true'
+            (pageChanged)=" pageChanged($event)">
+        </pagination>
+        <h3 *ngIf=!returnedArray>these Cocktails don't exist</h3>
     </div>
 </div>

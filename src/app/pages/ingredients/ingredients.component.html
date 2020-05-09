@@ -1,11 +1,57 @@
 <div class="component-page">
-    <div class="container">
-        <p>Total: {{listIngredients.length}} Ingredient(s)</p>
+    <!-- <div class="container">
         <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 w-100 wrap-box">
             <app-ingredients-item
-                class="col p-0"
-                *ngFor="let item of listIngredients"
-                [ingredient]=item></app-ingredients-item>
+            class="col p-0"
+            *ngFor="let item of listIngredients"
+            [ingredient]=item></app-ingredients-item>
         </div>
+    </div> -->
+
+    <div class="container">
+        <p class='text-right'>Total: {{count}} / {{listIngredients.length}} Ingredient(s)</p>
+        <pagination
+            class=" justify-content-center"
+            [totalItems]="listIngredients.length"
+            [maxSize]="3"
+            responsive='false'
+            [itemsPerPage]='10'
+            previousText="&lsaquo;"
+            nextText="&rsaquo;" firstText="&laquo;"
+            lastText="&raquo;"
+            [boundaryLinks]="true"
+            (pageChanged)=" pageChanged($event)">
+        </pagination>
+        <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4  wrap-box">
+
+            <div *ngFor="let content of returnedArray" class="card card-item wrap- content-wrapper">
+                <div>
+                    <div class="maska ">
+                        <a class="white-text"
+                            routerLink='{{content.idIngredient}}'
+                            routerLinkActive="router-link-active">More Details</a>
+                    </div>
+                    <img
+                        src="https://www.thecocktaildb.com/images/ingredients/{{content.strIngredient}}-Medium.png"
+                        class="card-img-top"
+                        alt="...">
+                    <div class="card-body p-0">
+                        <p>{{content.strIngredient}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <pagination
+            class=" justify-content-center"
+            [totalItems]="listIngredients.length"
+            [maxSize]="3"
+            responsive='false'
+            [itemsPerPage]='10'
+            previousText="&lsaquo;"
+            nextText="&rsaquo;" firstText="&laquo;"
+            lastText="&raquo;"
+            [boundaryLinks]="true"
+            (pageChanged)=" pageChanged($event)">
+        </pagination>
     </div>
 </div>

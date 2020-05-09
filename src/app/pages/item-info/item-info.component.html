@@ -1,38 +1,50 @@
-<p>item-info works!</p>
-<div class="wrap">
-    <div class="container card mb-3">
-        <div class="row no-gutters" *ngFor="let item of ingredientInfo? ingredientInfo:cocktail">
-            <div class="col-md-4">
-                <h5 class="card-title text-center">{{(ingredientInfo)?  item.strIngredient : item.strDrink}}</h5>
-                <img
-                    *ngIf="ingredientInfo"
-                    src="https://www.thecocktaildb.com/images/ingredients/{{item.strIngredient}}.png" class="card-img"
-                    alt="...">
-                <img
-                    *ngIf="!ingredientInfo"
-                    src="{{item.strDrinkThumb}}" class="card-img" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title text-center">{{(ingredientInfo)?  'Cocktails' : "Ingredients"}}</h5>
-
-
-                    <h5 class="card-title text-center">{{(ingredientInfo)?  'Description' : "Instructions" }}</h5>
-                    <p class="card-text">{{(ingredientInfo)?  item.strDescription : item.strInstructions}}</p>
-                    <p class="card-text"><small class="text-muted">Last....</small></p>
+<div class="container card mb-3">
+    <div class="row no-gutters" *ngFor="let item of ingredientInfo? ingredientInfo:cocktail">
+        <div class="col-md-4">
+            <h5 class="card-title text-center">{{(ingredientInfo)?  item.strIngredient : item.strDrink}}</h5>
+            <img
+                *ngIf="ingredientInfo"
+                src="https://www.thecocktaildb.com/images/ingredients/{{item.strIngredient}}.png" class="card-img"
+                alt="...">
+            <img
+                *ngIf="!ingredientInfo"
+                src="{{item.strDrinkThumb}}" class="card-img" alt="...">
+                
+                <h5 class="card-title text-center">{{(ingredientInfo)?  'Description' : "Instructions" }}</h5>
+                <p class="card-text">{{(ingredientInfo)?  item.strDescription : item.strInstructions}}</p>
+                <p class="card-text"><small class="text-muted">Last....</small></p>
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title text-center">{{(ingredientInfo)?  'Cocktails:' : "Ingredients:"}}</h5>
+                <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4  wrap-box" *ngIf="ingredientInfo">
+                    <div *ngFor="let content of listCocktail" class="card card-item wrap- content-wrapper">
+                        <a class="white-text"
+                            routerLink='{{content.idDrink}}'
+                            routerLinkActive="router-link-active">
+                            <img
+                                src={{content.strDrinkThumb}}
+                                class="card-img-top"
+                                alt="...">
+                            <div class="card-body p-0">
+                                <p>{{content.strDrink}}</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- idIngredient: "16"
+<!-- idIngredient: "16"
 strABV: null
 strAlcohol: "No"
 strDescription: null
 strIngredient: "Almond Flavoring"
 strType: null 
  style="max-width: 540px;"-->
-</div>
+
 <!-- <div class="wrap">
     <div class="container"
         *ngFor="let item of cocktail">
