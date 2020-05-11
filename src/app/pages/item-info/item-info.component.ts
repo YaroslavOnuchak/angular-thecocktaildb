@@ -43,7 +43,7 @@ export class ItemInfoComponent implements OnInit, OnDestroy {
           this.getCocktail(params.id)
           this.getIngredientId(params.id)
 
-          // console.log('param', params)
+          console.log('param', params)
         });
   }
 
@@ -64,11 +64,10 @@ export class ItemInfoComponent implements OnInit, OnDestroy {
     this.ingredientsService.getIngredientsById(idIngredient)
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((data) => {
-        // console.log('info2', data.ingredients)
+        console.log('info2', data.ingredients)
         this.ingredientInfo = data.ingredients
+        this.checkCocktrailByIngredient(this.ingredientInfo[0].strIngredient)
 
-        // data.ingredients.forEach(el =>
-        //   this.ingredientInfo.push(el))
       })
   }
   private checkCocktrailByIngredient(strIngredient: string): void {
@@ -80,12 +79,11 @@ export class ItemInfoComponent implements OnInit, OnDestroy {
   }
   public getlistIngrediendName(obj: Drink): void {
     for (let key in obj) {
-      this.listIngrediendStrIngredient.push(key)
+      this.listIngrediendStrIngredient.push(obj[key])
     }
     this.listIngrediendStrIngredient = this.listIngrediendStrIngredient.slice(21, 36)
-    console.log('1', this.listIngrediendStrIngredient)
+    console.log('1 listIngrediendStrIngredient', this.listIngrediendStrIngredient)
     this.getListIngrediend(this.listIngrediendStrIngredient)
-
 
   }
   getListIngrediend(ingientName: Array<string>): void {
@@ -93,15 +91,17 @@ export class ItemInfoComponent implements OnInit, OnDestroy {
       this.ingredientsService.getIngredientsList(el)
         .pipe(takeUntil(this.unsubscribe))
         .subscribe((data) => {
-          console.log('rere2', data)
+          data.ingredients.forEach(el => {
+            if (el !== null) {
+              this.listIngrediends.push(el)
 
+            }
+          })
 
+          console.log('1 ', this.listIngrediends)
 
-          // for (let i = 1; i < 16; i++) {
-          // }
         })
     )
-
   }
 
 

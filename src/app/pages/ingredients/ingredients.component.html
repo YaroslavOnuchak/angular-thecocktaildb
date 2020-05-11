@@ -15,11 +15,12 @@
             [totalItems]="listIngredients.length"
             [maxSize]="3"
             responsive='false'
-            [itemsPerPage]='10'
+            [itemsPerPage]='40'
             previousText="&lsaquo;"
             nextText="&rsaquo;" firstText="&laquo;"
             lastText="&raquo;"
             [boundaryLinks]="true"
+            [(ngModel)]='pageNumber'
             (pageChanged)=" pageChanged($event)">
         </pagination>
         <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4  wrap-box">
@@ -46,11 +47,12 @@
             [totalItems]="listIngredients.length"
             [maxSize]="3"
             responsive='false'
-            [itemsPerPage]='10'
+            [itemsPerPage]='40'
             previousText="&lsaquo;"
             nextText="&rsaquo;" firstText="&laquo;"
             lastText="&raquo;"
             [boundaryLinks]="true"
+            [(ngModel)]='pageNumber'
             (pageChanged)=" pageChanged($event)">
         </pagination>
     </div>

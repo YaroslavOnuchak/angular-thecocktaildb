@@ -73,7 +73,9 @@
             lastText="&raquo;"
             [boundaryLinks]="true"
             rotate='true'
+            [(ngModel)]='page'
             (pageChanged)=" pageChanged($event)">
+
         </pagination>
         <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4  wrap-box">
 
@@ -107,6 +109,7 @@
             lastText="&raquo;"
             [boundaryLinks]="true"
             rotate='true'
+            [(ngModel)]='page'
             (pageChanged)=" pageChanged($event)">
         </pagination>
         <h3 *ngIf=!returnedArray>these Cocktails don't exist</h3>

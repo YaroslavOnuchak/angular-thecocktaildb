@@ -18,6 +18,7 @@ export class IngredientsComponent implements OnInit {
   private ingredientId: number = 1;
   private maxLengthArrayIngredients: number = 1000;
   private unsubscribe = new Subject();
+  pageNumber: number = 1;
 
 
   constructor(
@@ -25,7 +26,7 @@ export class IngredientsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.returnedArray = this.listIngredients.slice(0, 10);
+    this.returnedArray = this.listIngredients.slice(0, 40);
     this.getIngredientsAll()
   }
   pageChanged(event: PageChangedEvent): void {
