@@ -1,5 +1,7 @@
 <div class="container card mb-3">
-    <div class="row no-gutters" *ngFor="let item of ingredientInfo? ingredientInfo : cocktail">
+    <div
+        class="row no-gutters"
+        *ngFor="let item of ingredientInfo? ingredientInfo : cocktail">
         <div class="col-md-4">
             <h5 class="card-title text-center">{{(ingredientInfo)?  item.strIngredient : item.strDrink}}</h5>
             <img
@@ -17,10 +19,11 @@
             <div class="card-body">
                 <h5 class="card-title text-center">{{(ingredientInfo)?  'Cocktails:' : "Ingredients:"}}</h5>
                 <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4  wrap-box">
-                    <div *ngFor="let content of ingredientInfo? listCocktail : listIngrediends"
+                    <div
+                        *ngFor="let content of ingredientInfo? listCocktail : listIngrediends"
                         class="card card-item wrap- content-wrapper">
-                        <a class="white-text"
-
+                        <a href="https://angular-the-cocktail-db.web.app/double-page/{{(!ingredientInfo)? content.idIngredient : content.idDrink}}"
+                            class="white-text"
                             routerLinkActive="router-link-active">
                             <img
                                 *ngIf="!ingredientInfo"
@@ -31,7 +34,7 @@
                                 *ngIf="ingredientInfo"
                                 src="{{content.strDrinkThumb}}/preview" class="card-img" alt="...">
                             <div class="card-body p-0">
-                                <p>{{(!ingredientInfo)?  content.strIngredient : content.strDrink}}</p>
+                                <p>{{(!ingredientInfo)? content.strIngredient : content.strDrink}}</p>
                             </div>
                         </a>
                     </div>
@@ -40,87 +43,3 @@
         </div>
     </div>
 </div>
-
-<!-- idIngredient: "16"
-strABV: null
-strAlcohol: "No"
-strDescription: null
-strIngredient: "Almond Flavoring"
-strType: null 
- style="max-width: 540px;"-->
-
-<!-- <div class="wrap">
-    <div class="container"
-        *ngFor="let item of cocktail">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img
-                    src='{{item.strDrinkThumb}}'
-                    class="card-img-top"
-                    alt="...">
-                <p class="card-text p-2"> </p>
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">{{item.strDrink}}</h5>
-                    <p class="card-text ">{{item.strInstructions}}</p>
-                    <p class="card-text p-1">...</p>
-                </div>
-            </div>
-        </div>
-    </div> -->
-<!--
-dateModified: "2016-10-05 12:36:28"
-idDrink: "15346"
-strAlcoholic: "Alcoholic"
-strCategory: "Cocktail"
-strCreativeCommonsConfirmed: "No"
-strDrink: "155 Belmont"
-strDrinkAlternate: null
-strDrinkDE: null
-strDrinkES: null
-strDrinkFR: null
-strDrinkThumb: "https://www.thecocktaildb.com/images/media/drink/yqvvqs1475667388.jpg"
-"strDrinkZH-HANS": null
-"strDrinkZH-HANT": null
-strGlass: "White wine glass"
-strIBA: null
-strIngredient1: "Dark rum"
-strIngredient10: null
-strIngredient11: null
-strIngredient12: null
-strIngredient13: null
-strIngredient14: null
-strIngredient15: null
-strIngredient2: "Light rum"
-strIngredient3: "Vodka"
-strIngredient4: "Orange juice"
-strIngredient5: null
-strIngredient6: null
-strIngredient7: null
-strIngredient8: null
-strIngredient9: null
-strInstructions: "Blend with ice. Serve in a wine glass. Garnish with carrot."
-strInstructionsDE: "Mit Eis vermischen. In einem Weinglas servieren. Mit Karotte garnieren."
-strInstructionsES: null
-strInstructionsFR: null
-"strInstructionsZH-HANS": null
-"strInstructionsZH-HANT": null
-strMeasure1: "1 shot "
-strMeasure10: null
-strMeasure11: null
-strMeasure12: null
-strMeasure13: null
-strMeasure14: null
-strMeasure15: null
-strMeasure2: "2 shots "
-strMeasure3: "1 shot "
-strMeasure4: "1 shot "
-strMeasure5: null
-strMeasure6: null
-strMeasure7: null
-strMeasure8: null
-strMeasure9: null
-strTags: null
-strVideo: null 
- </div> -->
