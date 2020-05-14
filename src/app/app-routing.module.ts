@@ -13,10 +13,9 @@ const routes: Routes = [
   { path: 'double-page', component: DoublePageComponent },
   { path: 'cocktails', component: CoctailsComponent },
   { path: 'ingredients', component: IngredientsComponent },
+  { path: 'double-page/:id', component: ItemInfoComponent },
   { path: 'cocktails/:id', redirectTo: 'double-page/:id' },
   { path: 'ingredients/:id', redirectTo: 'double-page/:id' },
-  { path: 'double-page/:id', component: ItemInfoComponent },
-  // { path: 'double-page/id:id', redirectTo: 'ingredients/:id' },
   { path: '**', component: PageNotFoundComponent }
 ];
 

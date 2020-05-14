@@ -19,13 +19,24 @@
         }
 
         input:checked+label {
-            text-shadow                 : 0 2px 5px green;
-          
-                    transform        : scale(1.2);
-                    -webkit-transform: scale(1.2);
-                    -moz-transform   : scale(1.2);
-                    -ms-transform    : scale(1.2);
-                    -o-transform     : scale(1.2);
+            text-shadow: 0 2px 5px green;
+
+            transform        : scale(1.2);
+            -webkit-transform: scale(1.2);
+            -moz-transform   : scale(1.2);
+            -ms-transform    : scale(1.2);
+            -o-transform     : scale(1.2);
+        }
+    }
+
+}
+
+@media screen and (max-width: 550px) {
+    :host {
+        width: 100%;
+
+        .card-item {
+            width: 120px;
         }
     }
 }

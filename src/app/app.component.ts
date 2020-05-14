@@ -10,8 +10,8 @@ import { DOCUMENT } from '@angular/common';
     trigger('fade',
       [
         state('void', style({ opacity: 0 })),
-        transition(':enter', [animate(300)]),
-        transition(':leave', [animate(500)]),
+        transition(':enter', [animate(1500)]),
+        transition(':leave', [animate(1500)]),
       ]
     )]
 })
@@ -19,7 +19,7 @@ export class AppComponent {
   title = 'the-best-Cocktails';
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(e) {
-    if (window.pageYOffset > 250) {
+    if (window.pageYOffset > 390) {
       let element = document.getElementById('navbar');
       element.classList.add('sticky');
     } else {

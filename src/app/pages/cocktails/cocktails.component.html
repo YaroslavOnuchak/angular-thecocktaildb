@@ -63,6 +63,7 @@
 
     <div class="container">
         <pagination
+            *ngIf=returnedArray
             class=" justify-content-center"
             [totalItems]="listCocktails.length"
             [maxSize]="3"
@@ -80,8 +81,8 @@
         <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4  wrap-box">
 
             <div *ngFor="let content of returnedArray|filterByAlcoholic:alco"
-                class="card card-item  content-wrapper">
-                <div class=" h-100  card-item">
+                class="card card-item p-0 content-wrapper">
+                <div class=" h-100 ">
                     <div class="maska ">
                         <a class="white-text"
                             routerLink='{{content.idDrink}}'
@@ -95,10 +96,10 @@
                         <p>{{content.strDrink}}</p>
                     </div>
                 </div>
-
             </div>
         </div>
         <pagination
+            *ngIf=returnedArray
             class=" justify-content-center align-bottom"
             [totalItems]="listCocktails.length"
             [maxSize]="3"
@@ -110,7 +111,7 @@
             [boundaryLinks]="true"
             rotate='true'
             [(ngModel)]='page'
-            (pageChanged)=" pageChanged($event)">
+            (pageChanged)="pageChanged($event)">
         </pagination>
         <h3 *ngIf=!returnedArray>these Cocktails don't exist</h3>
     </div>

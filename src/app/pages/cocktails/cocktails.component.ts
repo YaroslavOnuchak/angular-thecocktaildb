@@ -11,15 +11,16 @@ import { PageChangedEvent } from 'ngx-bootstrap/pagination';
   styleUrls: ['./cocktails.component.scss']
 })
 export class CoctailsComponent implements OnInit {
-  public listCocktails: Array<Drink> = [];
   public arrFirstLetter = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
   public count: number;
   public alco: string;
-  page: number = 1
+  public page: number = 1;
+  public cocktail: Drink;
+  public listCocktails: Array<Drink> = [];
+  public listCocktailsFlter: Array<Drink>;
+  public returnedArray: Array<Drink> = [];
 
-  cocktail: Drink;
-
-  public returnedArray: Array<Drink> = []
+  private toggle: boolean = true;
 
   constructor(
     private drinksServise: DrinksService
@@ -32,22 +33,31 @@ export class CoctailsComponent implements OnInit {
   pageChanged(event?: PageChangedEvent): void {
     const startItem = (event.page - 1) * event.itemsPerPage;
     const endItem = event.page * event.itemsPerPage;
-    this.returnedArray = this.listCocktails.slice(startItem, endItem);
+
     this.count = this.returnedArray.length
+    if (this.toggle) {
+      this.returnedArray = this.listCocktails.slice(startItem, endItem);
+      console.log(this.toggle)
+    } else {
+      console.log(this.toggle)
+      this.returnedArray = this.listCocktailsFlter.slice(startItem, endItem);
+    }
   }
 
   getDrinksByLetter(letter: string): void {
     this.drinksServise.getDrinksByLetter(letter)
       .subscribe(data => {
-        this.returnedArray = data.drinks;
-        if (!this.returnedArray) {
-          // console.log(this.listCocktails)
+        this.listCocktailsFlter = data.drinks;
+        if (!this.listCocktailsFlter) {
           this.count = 0;
+          this.returnedArray = null;
         }
-        this.count = this.returnedArray.length
+        this.count = this.listCocktailsFlter.length
+        this.returnedArray = this.listCocktailsFlter.slice(0, 40);
       },
         error => console.error(error)
       )
+    this.toggle = false;
   }
 
   getDrinksAll(): void {
@@ -61,7 +71,7 @@ export class CoctailsComponent implements OnInit {
           error => console.error(error)
         ))
     this.listCocktails.sort()
-
+    this.toggle = true;
   }
 
 }
