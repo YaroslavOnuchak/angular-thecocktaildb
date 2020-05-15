@@ -11,12 +11,17 @@ import { PageChangedEvent } from 'ngx-bootstrap/pagination';
   styleUrls: ['./cocktails.component.scss']
 })
 export class CoctailsComponent implements OnInit {
-  public arrFirstLetter = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+  public arrFirstLetter = ['0', '1',
+    '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
+    'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
+    'V', 'W',
+    'X', 'Y', 'Z']
   public count: number;
   public alco: string;
   public page: number = 1;
   public cocktail: Drink;
   public listCocktails: Array<Drink> = [];
+  public listCocktails1: Array<Drink> = [];
   public listCocktailsFlter: Array<Drink>;
   public returnedArray: Array<Drink> = [];
 
@@ -28,9 +33,11 @@ export class CoctailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDrinksAll()
+    // this.getDrinksAllById()
   }
 
   pageChanged(event?: PageChangedEvent): void {
+    // this.getDrinksAllById()
     const startItem = (event.page - 1) * event.itemsPerPage;
     const endItem = event.page * event.itemsPerPage;
 
@@ -73,5 +80,19 @@ export class CoctailsComponent implements OnInit {
     this.listCocktails.sort()
     this.toggle = true;
   }
-
+  // getDrinksAllById(): void {
+  //   let arr: any = new Array(20000).fill(12000);
+  //   arr = arr.map((v: number) => v + 1)
+  //   arr.forEach(el => this.drinksServise.getDrinkInfo(el).
+  //     subscribe(data => {
+  //       if (data.drinks !== null) {
+  //         data.drinks.forEach(ele => this.listCocktails1.push(ele))
+  //       }
+  //     }
+  //     )
+  //   )
+  //   console.log(arr)
+  //   console.log(this.listCocktails1)
+  // }
 }
+
