@@ -18,7 +18,6 @@ import { DoublePageComponent } from './pages/double-page/double-page.component';
 
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { ItemInfoComponent } from './pages/item-info/item-info.component';
-import { FilterByAlcoholicPipe } from './shared/pipes/filterByAlcoholic/filter-by-alcoholic.pipe';
 import { FormsModule } from '@angular/forms';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 
@@ -32,13 +31,10 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     MainComponent,
     FooterComponent,
     CoctailsComponent,
-
     IngredientsComponent,
-
     DoublePageComponent,
     PageNotFoundComponent,
-    ItemInfoComponent,
-    FilterByAlcoholicPipe
+    ItemInfoComponent
   ],
   imports: [
     BrowserModule,

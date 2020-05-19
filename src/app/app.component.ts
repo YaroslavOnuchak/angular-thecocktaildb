@@ -10,8 +10,8 @@ import { DOCUMENT } from '@angular/common';
     trigger('fade',
       [
         state('void', style({ opacity: 0 })),
-        transition(':enter', [animate(1500)]),
-        transition(':leave', [animate(1500)]),
+        transition(':enter', [animate(500)]),
+        transition(':leave', [animate(500)]),
       ]
     )]
 })

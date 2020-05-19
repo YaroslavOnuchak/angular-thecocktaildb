@@ -17,11 +17,11 @@ export class CoctailsComponent implements OnInit {
     'V', 'W',
     'X', 'Y', 'Z']
   public count: number;
-  public alco: string;
+  // public alco: string;
   public page: number = 1;
   public cocktail: Drink;
   public listCocktails: Array<Drink> = [];
-  public listCocktails1: Array<Drink> = [];
+  // public listCocktails1: Array<Drink> = [];
   public listCocktailsFlter: Array<Drink>;
   public returnedArray: Array<Drink> = [];
 
@@ -66,8 +66,24 @@ export class CoctailsComponent implements OnInit {
       )
     this.toggle = false;
   }
+  getDrinksByType(letter: string): void {
+    this.drinksServise.getDrinksStrAlcoholic(letter)
+      .subscribe(data => {
+        this.listCocktailsFlter = data.drinks;
+        if (!this.listCocktailsFlter) {
+          this.count = 0;
+          this.returnedArray = null;
+        }
+        this.count = this.listCocktailsFlter.length
+        this.returnedArray = this.listCocktailsFlter.slice(0, 40);
+      },
+        error => console.error(error)
+      )
+    this.toggle = false;
+  }
 
   getDrinksAll(): void {
+    this.listCocktails = [];
     this.arrFirstLetter.forEach(el =>
       this.drinksServise.getDrinksByLetter(el)
         .subscribe(data => {

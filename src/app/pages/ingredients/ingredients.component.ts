@@ -26,7 +26,7 @@ export class IngredientsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.returnedArray = this.listIngredients.slice(0, 40);
+    // this.returnedArray = this.listIngredients.slice(0, 40);
     this.getIngredientsAll()
   }
   pageChanged(event: PageChangedEvent): void {

@@ -12,8 +12,10 @@
                 *ngIf="!ingredientInfo"
                 src="{{item.strDrinkThumb}}" class="card-img" alt="...">
 
-            <h5 class="card-title text-center">{{(ingredientInfo)?  'Description' : "Instructions" }}</h5>
-            <p class="card-text">{{(ingredientInfo)?  item.strDescription : item.strInstructions}}</p>
+            <h5 class="card-title text-center">{{(ingredientInfo)?  'Description:' : "Instructions:" }}</h5>
+            <p class="card-text">{{(ingredientInfo)?  item.strDescription : item.strInstructions}}
+
+            </p>
         </div>
         <div class="col-md-8">
             <div class="card-body">
@@ -21,7 +23,7 @@
                 <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4  wrap-box">
                     <div
                         *ngFor="let content of ingredientInfo? listCocktail : listIngrediends"
-                        class="card card-item wrap- content-wrapper">
+                        class="card card-item  content-wrapper">
                         <a href="https://angular-the-cocktail-db.web.app/double-page/{{(!ingredientInfo)? content.idIngredient : content.idDrink}}"
                             class="white-text"
                             routerLinkActive="router-link-active">
