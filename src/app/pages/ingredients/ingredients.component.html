@@ -16,7 +16,8 @@
         </pagination>
         <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4  wrap-box">
 
-            <div *ngFor="let content of returnedArray" class="card card-item  content-wrapper">
+            <div *ngFor="let content of returnedArray"
+                class="card card-item  content-wrapper">
                 <div>
                     <div class="maska ">
                         <a class="white-text"
@@ -31,6 +32,10 @@
                         <p>{{content.strIngredient}}</p>
                     </div>
                 </div>
+                <span class="material-icons add-btn"
+                    (click)="openModalEdit(content)">
+                    add_circle_outline
+                </span>
             </div>
         </div>
         <pagination

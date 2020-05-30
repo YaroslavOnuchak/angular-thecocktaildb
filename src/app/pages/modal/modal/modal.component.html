@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div *ngFor="let content of listtIngAdd"
+        class="card card-item  content-wrapper">
+        <div>
+            <div class="maska ">
+                <a class="white-text"
+                    routerLink='{{content.idIngredient}}'
+                    routerLinkActive="router-link-active">More Details</a>
+            </div>
+            <img
+                src="https://www.thecocktaildb.com/images/ingredients/{{content.strIngredient}}-Medium.png"
+                class="card-img-top"
+                alt="...">
+            <div class="card-body p-0">
+                <p>{{content.strIngredient}}</p>
+            </div>
+        </div>
+        <span class="material-icons add-btn">
+            add_circle_outline
+        </span>
+    </div>
+</div>

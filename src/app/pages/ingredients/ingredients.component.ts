@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Ingredient, Ingredients } from 'src/app/core/interfaces';
 import { IngredientsService } from 'src/app/core/services/ingredients/ingredients.service';
 import { takeUntil } from 'rxjs/operators';
@@ -15,8 +15,10 @@ export class IngredientsComponent implements OnInit {
   public returnedArray: Array<Ingredient>
   public count: number;
 
+  @Output() edit = new EventEmitter<Ingredient>();
+
   private ingredientId: number = 1;
-  private maxLengthArrayIngredients: number = 1000;
+  private maxLengthArrayIngredients: number = 100;
   private unsubscribe = new Subject();
   pageNumber: number = 1;
 
@@ -54,5 +56,9 @@ export class IngredientsComponent implements OnInit {
       this.ingredientId++
     }
     this.listIngredients.sort()
+  }
+  openModalEdit(content: Ingredient): void {
+    console.log('item', content)
+    this.edit.emit(content)
   }
 }
