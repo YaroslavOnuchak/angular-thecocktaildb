@@ -27,4 +27,7 @@ export class AppComponent {
       element.classList.remove('sticky');
     }
   }
+  add(any: any): any {
+    console.log('kyky')
+  }
 }

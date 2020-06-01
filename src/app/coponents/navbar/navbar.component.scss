@@ -2,7 +2,28 @@
     justify-content: space-between;
     color          : white;
 
-    span {
-        cursor: pointer;
+    .wrap {
+        position: relative;
+
+        span {
+            cursor: pointer;
+        }
+
+        .material-icons {
+            font-size: 2rem;
+        }
+
+        .coutIngred {
+            position     : absolute;
+            top          : -.5rem;
+            left         : -.5rem;
+            z-index      : 22;
+            font-size    : .8rem;
+            display      : inline-block;
+            font-weight  : 900;
+            color        : rgb(223, 16, 161);
+            border-bottom: 2px solid rgb(223, 16, 161);
+        }
+
     }
 }

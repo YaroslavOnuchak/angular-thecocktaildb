@@ -15,7 +15,7 @@ export class IngredientsComponent implements OnInit {
   public returnedArray: Array<Ingredient>
   public count: number;
 
-  @Output() edit = new EventEmitter<Ingredient>();
+  @Output() addIngred = new EventEmitter<Ingredient>();
 
   private ingredientId: number = 1;
   private maxLengthArrayIngredients: number = 100;
@@ -24,7 +24,8 @@ export class IngredientsComponent implements OnInit {
 
 
   constructor(
-    private ingredientsServise: IngredientsService
+    private ingredientsServise: IngredientsService,
+    private addServis: IngredientsService
   ) { }
 
   ngOnInit(): void {
@@ -59,6 +60,7 @@ export class IngredientsComponent implements OnInit {
   }
   openModalEdit(content: Ingredient): void {
     console.log('item', content)
-    this.edit.emit(content)
+    this.addServis.addTo(content)
+    this.addIngred.emit(content)
   }
 }

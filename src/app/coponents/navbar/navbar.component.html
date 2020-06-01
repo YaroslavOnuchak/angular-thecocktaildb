@@ -1,4 +1,6 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark animated fadeInDown" id="navbar">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark animated fadeInDown"
+
+    id="navbar">
     <ul class="navbar-nav">
         <li class="nav-item"
             routerLinkActive="active">
@@ -16,8 +18,12 @@
                 routerLink="ingredients">Ingredients</a>
         </li>
     </ul>
-    <span class="material-icons"
-        (click)="openModal()">
-        shopping_cart
-    </span>
+    <div class="wrap">
+        <span *ngIf="listIng.length > 0" class="coutIngred">
+            {{listIng.length}}
+        </span>
+        <span class="material-icons"
+            (click)="openModal()">shopping_cart
+        </span>
+    </div>
 </nav>
