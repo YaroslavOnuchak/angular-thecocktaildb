@@ -16,8 +16,16 @@
                 <img
                     src="https://www.thecocktaildb.com/images/ingredients/{{content.strIngredient}}-Small.png"
                     alt="..." />
-                <span class="badge badge-success">Type: {{content.strType}}</span>
-                <span class="badge badge-success">Alcohol: {{content.strAlcohol}}</span>
+
+                <span class="badge badge-pill badge-warning"
+                    *ngIf="content.strType">Type: {{content.strType}}</span>
+
+                <span class="badge badge-success"
+                    [ngClass]="{'badge-success': content.strAlcohol=='No'? true: false,
+                        'badge-danger': content.strAlcohol=='Yes'? true: false }"
+                    *ngIf="content.strAlcohol">Alcohol:
+                    {{content.strAlcohol}}</span>
+
             </div>
         </div>
     </div>
