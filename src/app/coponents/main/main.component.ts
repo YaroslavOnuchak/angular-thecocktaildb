@@ -11,7 +11,4 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  add(any: any): any {
-    console.log('kyky')
-  }
 }

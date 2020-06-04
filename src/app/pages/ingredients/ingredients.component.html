@@ -24,13 +24,13 @@
                             routerLink='{{content.idIngredient}}'
                             routerLinkActive="router-link-active">More Details</a>
                     </div>
+                    <div class="card-body p-0">
+                        <p>{{content.strIngredient}}</p>
+                    </div>
                     <img
                         src="https://www.thecocktaildb.com/images/ingredients/{{content.strIngredient}}-Medium.png"
                         class="card-img-top"
                         alt="...">
-                    <div class="card-body p-0">
-                        <p>{{content.strIngredient}}</p>
-                    </div>
                 </div>
                 <span class="material-icons add-btn"
                     (click)="openModalEdit(content)">

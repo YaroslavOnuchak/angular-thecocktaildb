@@ -21,7 +21,6 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ModalComponent } from './pages/modal/modal/modal.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

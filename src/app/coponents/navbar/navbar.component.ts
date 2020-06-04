@@ -22,14 +22,14 @@ export class NavbarComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit(): void {
-    this.openModalEdit()
+    this.modalList()
   }
   ngOnChanges(): void {
   }
-  openModalEdit(): void {
-    this.listIng = this.addServis.addTo()
-    console.log('nav', this.listIng)
+  modalList(): void {
+    this.listIng = this.addServis.addTo();
 
+    // document.querySelector('.material-icons').nativeElement.style.textShadow = ' 0 0 5px black'
   }
   openModal(): void {
     if (this.listIng.length > 0) {

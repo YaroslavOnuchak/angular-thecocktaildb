@@ -23,6 +23,7 @@
             {{listIng.length}}
         </span>
         <span class="material-icons"
+            [ngStyle]="listIng.length > 0? {'text-shadow': '0 0 5px white'} :  {'color': 'rgba(255, 255, 255, 0.557)'}"
             (click)="openModal()">shopping_cart
         </span>
     </div>

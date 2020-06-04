@@ -13,7 +13,7 @@ export class ModalComponent implements OnInit {
   modalData: Array<Ingredient>
   constructor(
     private modalService: BsModalService,
-       private addServis: IngredientsService
+    private addServis: IngredientsService
   ) { }
 
   ngOnInit(): void {
@@ -21,9 +21,10 @@ export class ModalComponent implements OnInit {
   }
   hideModal() {
     this.modalService.hide(1);
+    document.body.classList.remove('modal-open')
   }
-  delIng(id:Ingredient): void {
- this.addServis.delIng(id);
+  delIng(id: Ingredient): void {
+    this.addServis.delIng(id);
 
   }
 

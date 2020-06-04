@@ -1,3 +1,9 @@
 :host {
     z-index: 222;
+
+    .card-body {
+        p {
+            text-align: center;
+        }
+    }
 }

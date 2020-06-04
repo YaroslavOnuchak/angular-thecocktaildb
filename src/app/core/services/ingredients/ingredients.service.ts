@@ -39,9 +39,7 @@ export class IngredientsService {
     return this.buy
   }
   delIng(id: Ingredient): Array<Ingredient> {
-
     this.buy.splice(this.buy.indexOf(id), 1)
     return this.buy
   }
-
 }
