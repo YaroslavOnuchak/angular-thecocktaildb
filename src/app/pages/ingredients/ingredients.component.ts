@@ -5,6 +5,8 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 
+import AOS from 'aos';
+
 @Component({
   selector: 'app-ingredients',
   templateUrl: './ingredients.component.html',
@@ -18,7 +20,7 @@ export class IngredientsComponent implements OnInit {
   @Output() addIngred = new EventEmitter<Ingredient>();
 
   private ingredientId: number = 1;
-  private maxLengthArrayIngredients: number = 100;
+  private maxLengthArrayIngredients: number = 1000;
   private unsubscribe = new Subject();
   pageNumber: number = 1;
 
@@ -30,13 +32,15 @@ export class IngredientsComponent implements OnInit {
 
   ngOnInit(): void {
     // this.returnedArray = this.listIngredients.slice(0, 40);
-    this.getIngredientsAll()
+    this.getIngredientsAll();
+    AOS.init()
   }
   pageChanged(event: PageChangedEvent): void {
     const startItem = (event.page - 1) * event.itemsPerPage;
     const endItem = event.page * event.itemsPerPage;
     this.returnedArray = this.listIngredients.slice(startItem, endItem);
-    this.count = this.returnedArray.length
+    this.count = this.returnedArray.length;
+    window.scrollTo(0, 0)
   }
   async getIngredientsAll(): Promise<void> {
     // console.log("11111111", this.listIngredients)

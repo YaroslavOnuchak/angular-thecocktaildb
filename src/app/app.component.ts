@@ -19,15 +19,13 @@ export class AppComponent {
   title = 'the-best-Cocktails';
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(e) {
-    if (window.pageYOffset > 390) {
+    if (window.pageYOffset > 370) {
+      console.log(window.pageYOffset)
       let element = document.getElementById('navbar');
       element.classList.add('sticky');
     } else {
       let element = document.getElementById('navbar');
       element.classList.remove('sticky');
     }
-  }
-  add(any: any): any {
-    console.log('kyky')
   }
 }

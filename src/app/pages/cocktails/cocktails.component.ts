@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Drinks, Drink } from 'src/app/core/interfaces';
+import { Drink } from 'src/app/core/interfaces';
 import { DrinksService } from 'src/app/core/services/drinks/drinks.service';
-import { FormGroup } from '@angular/forms';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
+import AOS from 'aos';
 
 
 @Component({
@@ -34,6 +34,7 @@ export class CoctailsComponent implements OnInit {
   ngOnInit(): void {
     this.getDrinksAll()
     // this.getDrinksAllById()
+    AOS.init()
   }
 
   pageChanged(event?: PageChangedEvent): void {
@@ -49,6 +50,7 @@ export class CoctailsComponent implements OnInit {
       console.log(this.toggle)
       this.returnedArray = this.listCocktailsFlter.slice(startItem, endItem);
     }
+    window.scrollTo(0, 0)
   }
 
   getDrinksByLetter(letter: string): void {

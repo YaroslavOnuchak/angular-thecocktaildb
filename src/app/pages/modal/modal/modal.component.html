@@ -20,7 +20,7 @@
                 <span class="badge badge-pill badge-warning"
                     *ngIf="content.strType">Type: {{content.strType}}</span>
 
-                <span class="badge badge-success"
+                <span class="badge "
                     [ngClass]="{'badge-success': content.strAlcohol=='No'? true: false,
                         'badge-danger': content.strAlcohol=='Yes'? true: false }"
                     *ngIf="content.strAlcohol">Alcohol:
