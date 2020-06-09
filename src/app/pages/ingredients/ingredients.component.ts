@@ -63,8 +63,8 @@ export class IngredientsComponent implements OnInit {
     this.listIngredients.sort()
   }
   openModalEdit(content: Ingredient): void {
-    console.log('item', content)
     this.addServis.addTo(content)
+    this.addServis.putToDataBase(content)
     this.addIngred.emit(content)
   }
 }

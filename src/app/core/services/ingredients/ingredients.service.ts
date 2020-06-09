@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Ingredients, Ingredient } from '../../interfaces';
+import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,21 @@ export class IngredientsService {
   buy: Array<Ingredient> = [];
 
   private url = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid='
-  private urlByname = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?i='
+  private urlByname = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?i=';
+
+  private dbPath = '/Ingredients';
+
+  customersRef: AngularFireList<Ingredient> = null;
+
   constructor(
-    private http: HttpClient
-  ) { }
-  // getIngredientsById(): Observable<Ingredients> {
-  //   return this.http.get<Ingredients>(`${this.url}`)
-  // }
+    private http: HttpClient,
+    private db: AngularFireDatabase
+  ) {
+    this.customersRef = db.list(this.dbPath);
+  }
+  putToDataBase(customer: Ingredient): void {
+    this.customersRef.push(customer);
+  }
   getIngredientsById(idIngredient: number): Observable<Ingredients> {
     return this.http.get<Ingredients>(`${this.url}${idIngredient}`)
   }

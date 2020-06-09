@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "angular-the-cocktail-db"
+  },
+  "targets": {
+    "angular-the-cocktail-db": {
+      "hosting": {
+        "the-best-Cocktails": [
+          "angular-the-cocktail-db"
+        ]
+      }
+    }
   }
 }
