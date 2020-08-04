@@ -19,12 +19,17 @@ export class ModalComponent implements OnInit {
   ngOnInit(): void {
     this.listtIngAdd = this.modalData
   }
+
   hideModal() {
     this.modalService.hide(1);
     document.body.classList.remove('modal-open')
   }
   delIng(id: Ingredient): void {
     this.addServis.delIng(id);
+    this.addServis.deleteFromDataBase(id.key);
+    if (this.modalData.length < 1) {
+      this.hideModal()
+    }
 
   }
 

@@ -3,10 +3,11 @@ export class Ingredients {
 }
 
 export class Ingredient {
+    key: string;
     idIngredient: number;
     strIngredient: string;
-    strDescription:string;
-    strType:string;
+    strDescription: string;
+    strType: string;
     strAlcohol: string;
     strABV: string;
 }

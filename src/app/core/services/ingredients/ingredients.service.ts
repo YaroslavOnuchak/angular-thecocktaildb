@@ -47,8 +47,13 @@ export class IngredientsService {
     })
     return this.buy
   }
+
+  deleteFromDataBase(key: string): Promise<void> {
+    return this.customersRef.remove(key);
+  }
   delIng(id: Ingredient): Array<Ingredient> {
-    this.buy.splice(this.buy.indexOf(id), 1)
+    this.buy.splice(this.buy.indexOf(id), 1);
+    // this.customersRef.remove(id);
     return this.buy
   }
 }

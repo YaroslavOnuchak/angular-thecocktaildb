@@ -24,7 +24,7 @@ import { FormsModule } from '@angular/forms';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ModalComponent } from './pages/modal/modal/modal.component';
 
-
+import { ParticlesModule } from 'angular-particle';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { ModalComponent } from './pages/modal/modal/modal.component';
     DoublePageComponent,
     PageNotFoundComponent,
     ItemInfoComponent,
-    ModalComponent
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,8 +50,9 @@ import { ModalComponent } from './pages/modal/modal/modal.component';
     ModalModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule, // for database
+    ParticlesModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,119 +1,146 @@
 <div class="component-page">
-    <p class='text-right mr-3'>Total: {{(count)}} / {{listCocktails.length}} cocktail(s)</p>
+  <p class="text-right mr-3">
+    Total: {{ count }} / {{ listCocktails.length }} cocktail(s)
+  </p>
 
-    <div class="d-flex wrap-radio">
-        <div
-            *ngFor="let item of arrFirstLetter">
-            <input
-                class="form-check-input d-none"
-                type="radio"
-                name="inlineRadioOptions"
-                id={{item}} value="option1">
-            <label
-                class="form-check-label"
-                (click)="getDrinksByLetter(item)"
-                for="{{item}}">{{item}}</label>
+  <form class="d-flex wrap-radio">
+    <div *ngFor="let item of arrFirstLetter">
+      <input
+        class="form-check-input d-none"
+        type="radio"
+        checked="{{ toggleLetter }}"
+        name="inlineRadioOptions"
+        id="{{ item }}"
+        value="option1"
+      />
+      <label
+        class="form-check-label"
+        (click)="getDrinksByLetter(item)"
+        for="{{ item }}"
+        >{{ item }}</label
+      >
+    </div>
+  </form>
+  <div class="container">
+    <form class="col">
+      <div class="radio-wrap">
+        <div class="custom-control custom-radio custom-control-inline low">
+          <input
+            class="custom-control-input searchPriority"
+            type="radio"
+            id="radioInline1"
+            name="searchPriority"
+            value="Alcoholic"
+            (click)="getDrinksByType('Alcoholic')"
+          />
+          <label class="custom-control-label" for="radioInline1"
+            >Alcoholic</label
+          >
         </div>
-    </div>
-    <div class="container">
-        <form class="col">
-            <div class="radio-wrap">
-                <div class="custom-control custom-radio custom-control-inline low">
-                    <input class="custom-control-input"
-                        type="radio"
-                        id="radioInline1"
-                        name="searchPriority"
-                        value="Alcoholic"
-                        (click)="getDrinksByType('Alcoholic')" />
-                    <label
-                        class="custom-control-label" for="radioInline1">Alcoholic</label>
-                </div>
-                <div class="custom-control custom-radio custom-control-inline medium">
-                    <input class="custom-control-input"
-                        type="radio"
-                        id="radioInline2"
-                        name="searchPriority"
-                        value="Non alcoholic"
-                        (click)="getDrinksByType('Non alcoholic')" />
-                    <label class="custom-control-label" for="radioInline2">Non alcoholic</label>
-                </div>
-                <div class="custom-control custom-radio custom-control-inline hight">
-                    <input class="custom-control-input"
-                        type="radio"
-                        id="radioInline3"
-                        name="searchPriority"
-                        value="Optional alcohol"
-                        (click)="getDrinksByType('Optional alcohol')" />
-                    <label class="custom-control-label" for="radioInline3">Optional alcohol</label>
-                </div>
-
-                <div class="custom-control custom-radio custom-control-inline all">
-                    <input
-                        type="radio"
-                        id="radioInline4"
-                        name="searchPriority"
-                        class="custom-control-input"
-                        value="all"
-                        (click)="getDrinksAll()" />
-                    <label class="custom-control-label" for="radioInline4">All</label>
-                </div>
-            </div>
-        </form>
-    </div>
-
-
-    <div class="container">
-        <pagination
-            *ngIf=returnedArray
-            class=" justify-content-center"
-            [totalItems]="listCocktails.length"
-            [maxSize]="3"
-            responsive='false'
-            [itemsPerPage]='40'
-            previousText="&lsaquo;"
-            nextText="&rsaquo;" firstText="&laquo;"
-            lastText="&raquo;"
-            [boundaryLinks]="true"
-            rotate='true'
-            [(ngModel)]='page'
-            (pageChanged)=" pageChanged($event)">
-
-        </pagination>
-        <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4  wrap-box">
-
-            <div *ngFor="let content of returnedArray"
-                class="card card-item p-0 content-wrapper " data-aos="zoom-in">
-                <div class=" h-100 ">
-                    <div class="maska ">
-                        <a class="white-text"
-                            routerLink='{{content.idDrink}}'
-                            routerLinkActive="router-link-active">More Details</a>
-                    </div>
-                    <img
-                        src="{{content.strDrinkThumb}}/preview"
-                        class="card-img-top"
-                        alt="...">
-                    <div class="card-body pb-0 ">
-                        <p>{{content.strDrink}}</p>
-                    </div>
-                </div>
-            </div>
+        <div class="custom-control custom-radio custom-control-inline medium">
+          <input
+            class="custom-control-input searchPriority"
+            type="radio"
+            id="radioInline2"
+            name="searchPriority"
+            value="Non alcoholic"
+            (click)="getDrinksByType('Non alcoholic')"
+          />
+          <label class="custom-control-label" for="radioInline2"
+            >Non alcoholic</label
+          >
         </div>
-        <pagination
-            *ngIf=returnedArray
-            class=" justify-content-center align-bottom"
-            [totalItems]="listCocktails.length"
-            [maxSize]="3"
-            responsive='false'
-            [itemsPerPage]='40'
-            previousText="&lsaquo;"
-            nextText="&rsaquo;" firstText="&laquo;"
-            lastText="&raquo;"
-            [boundaryLinks]="true"
-            rotate='true'
-            [(ngModel)]='page'
-            (pageChanged)="pageChanged($event)">
-        </pagination>
-        <h3 *ngIf=!returnedArray class="mt-3">these Cocktails don't exist</h3>
+        <div class="custom-control custom-radio custom-control-inline hight">
+          <input
+            class="custom-control-input searchPriority"
+            type="radio"
+            id="radioInline3"
+            name="searchPriority"
+            value="Optional alcohol"
+            (click)="getDrinksByType('Optional alcohol')"
+          />
+          <label class="custom-control-label" for="radioInline3"
+            >Optional alcohol</label
+          >
+        </div>
+
+        <div class="custom-control custom-radio custom-control-inline all">
+          <input
+            type="radio"
+            id="radioInline4"
+            name="searchPriority"
+            class="custom-control-input searchPriority"
+            value="all"
+            [checked]=""
+            (click)="getDrinksAll()"
+          />
+          <label class="custom-control-label" for="radioInline4">All</label>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="container">
+    <pagination
+      *ngIf="returnedArray"
+      class="justify-content-center align-bottom"
+      [totalItems]="listCocktails.length"
+      [maxSize]="maxSize"
+      responsive="false"
+      [itemsPerPage]="40"
+      previousText="&lsaquo;"
+      nextText="&rsaquo;"
+      firstText="&laquo;"
+      lastText="&raquo;"
+      [boundaryLinks]="true"
+      rotate="true"
+      [(ngModel)]="page"
+      (pageChanged)="pageChanged($event)"
+    >
+    </pagination>
+    <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 wrap-box">
+      <div
+        *ngFor="let content of returnedArray"
+        class="card card-item p-0 content-wrapper"
+        data-aos="zoom-in"
+      >
+        <div class="h-100">
+          <div class="maska">
+            <a
+              class="white-text"
+              routerLink="{{ content.idDrink }}"
+              routerLinkActive="router-link-active"
+              >More Details</a
+            >
+          </div>
+          <img
+            src="{{ content.strDrinkThumb }}/preview"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body pb-0">
+            <p>{{ content.strDrink }}</p>
+          </div>
+        </div>
+      </div>
     </div>
+    <pagination
+      *ngIf="returnedArray"
+      class="justify-content-center align-bottom"
+      [totalItems]="listCocktails.length"
+      [maxSize]="maxSize"
+      responsive="false"
+      [itemsPerPage]="40"
+      previousText="&lsaquo;"
+      nextText="&rsaquo;"
+      firstText="&laquo;"
+      lastText="&raquo;"
+      [boundaryLinks]="true"
+      rotate="true"
+      [(ngModel)]="page"
+      (pageChanged)="pageChanged($event)"
+    >
+    </pagination>
+    <h3 *ngIf="!returnedArray" class="mt-3">these Cocktails don't exist</h3>
+  </div>
 </div>
