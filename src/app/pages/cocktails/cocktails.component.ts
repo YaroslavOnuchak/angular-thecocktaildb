@@ -56,12 +56,15 @@ export class CoctailsComponent implements OnInit {
   public listCocktailsFlter: Array<Drink>;
   public returnedArray: Array<Drink> = [];
   public toggleLetter: boolean = false;
+  public toggleLoader: boolean = false;
 
   private toggle: boolean = true;
 
   constructor(private drinksServise: DrinksService) {}
 
   ngOnInit(): void {
+    this.toggleLoader = false;
+    console.log('object', this.toggleLoader);
     this.getDrinksAll();
     AOS.init();
   }
@@ -119,19 +122,30 @@ export class CoctailsComponent implements OnInit {
     this.cleanRadioLeter();
     this.toggleLetter = false;
     this.listCocktails = [];
-    this.arrFirstLetter.forEach((el) =>
+    this.arrFirstLetter.forEach((el) => {
       this.drinksServise.getDrinksByLetter(el).subscribe(
         (data) => {
           data.drinks.forEach((ele) => this.listCocktails.push(ele));
           this.returnedArray = this.listCocktails.slice(0, 40);
           this.count = this.returnedArray.length;
+          this.toggleLoader = true;
         },
         (error) => console.error(error)
-      )
-    );
+      );
+    });
     this.listCocktails.sort();
     this.toggle = true;
+    // this.loader();
   }
+  // loader(): void {
+  //   window.onload = () => {
+  //     document.querySelectorAll('img').forEach((el) => {
+  //       if (el.width > 0) {
+  //         this.toggleLoader = true;
+  //       }
+  //     });
+  //   };
+  // }
   cleanRadioLeter(): void {
     document.getElementsByName('inlineRadioOptions').forEach((el) => {
       if (el.getAttribute('checked')) {

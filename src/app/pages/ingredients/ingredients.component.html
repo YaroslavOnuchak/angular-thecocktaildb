@@ -1,56 +1,71 @@
 <div class="component-page">
-    <div class="container">
-        <p class='text-right'>Total: {{count}} / {{listIngredients.length}} Ingredient(s)</p>
-        <pagination
-            class=" justify-content-center"
-            [totalItems]="listIngredients.length"
-            [maxSize]="3"
-            responsive='false'
-            [itemsPerPage]='40'
-            previousText="&lsaquo;"
-            nextText="&rsaquo;" firstText="&laquo;"
-            lastText="&raquo;"
-            [boundaryLinks]="true"
-            [(ngModel)]='pageNumber'
-            (pageChanged)=" pageChanged($event)">
-        </pagination>
-        <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4  wrap-box">
-
-            <div *ngFor="let content of returnedArray"
-                class="card card-item  content-wrapper"
-                data-aos="flip-up">
-                <div>
-                    <div class="maska ">
-                        <a class="white-text"
-                            routerLink='{{content.idIngredient}}'
-                            routerLinkActive="router-link-active">More Details</a>
-                    </div>
-                    <div class="card-body p-0">
-                        <p>{{content.strIngredient}}</p>
-                    </div>
-                    <img
-                        src="https://www.thecocktaildb.com/images/ingredients/{{content.strIngredient}}-Medium.png"
-                        class="card-img-top"
-                        alt="...">
-                </div>
-                <span class="material-icons add-btn"
-                    (click)="openModalEdit(content)">
-                    add_circle_outline
-                </span>
-            </div>
+  <div class="wrap-loader">
+    <div class="lds-dual-ring" *ngIf="!toggleLoader"></div>
+  </div>
+  <div class="container" *ngIf="toggleLoader">
+    <p class="text-right">
+      Total: {{ count }} / {{ listIngredients.length }} Ingredient(s)
+    </p>
+    <pagination
+      class="justify-content-center"
+      [totalItems]="listIngredients.length"
+      [maxSize]="3"
+      responsive="false"
+      [itemsPerPage]="40"
+      previousText="&lsaquo;"
+      nextText="&rsaquo;"
+      firstText="&laquo;"
+      lastText="&raquo;"
+      [boundaryLinks]="true"
+      [(ngModel)]="pageNumber"
+      (pageChanged)="pageChanged($event)"
+    >
+    </pagination>
+    <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 wrap-box">
+      <div
+        *ngFor="let content of returnedArray"
+        class="card card-item content-wrapper"
+        data-aos="flip-up"
+      >
+        <div>
+          <div class="maska">
+            <a
+              class="white-text"
+              routerLink="{{ content.idIngredient }}"
+              routerLinkActive="router-link-active"
+              >More Details</a
+            >
+          </div>
+          <div class="card-body p-0">
+            <p>{{ content.strIngredient }}</p>
+          </div>
+          <img
+            src="https://www.thecocktaildb.com/images/ingredients/{{
+              content.strIngredient
+            }}-Medium.png"
+            class="card-img-top"
+            alt="..."
+          />
         </div>
-        <pagination
-            class=" justify-content-center"
-            [totalItems]="listIngredients.length"
-            [maxSize]="3"
-            responsive='false'
-            [itemsPerPage]='40'
-            previousText="&lsaquo;"
-            nextText="&rsaquo;" firstText="&laquo;"
-            lastText="&raquo;"
-            [boundaryLinks]="true"
-            [(ngModel)]='pageNumber'
-            (pageChanged)=" pageChanged($event)">
-        </pagination>
+        <span class="material-icons add-btn" (click)="openModalEdit(content)">
+          add_circle_outline
+        </span>
+      </div>
     </div>
+    <pagination
+      class="justify-content-center"
+      [totalItems]="listIngredients.length"
+      [maxSize]="3"
+      responsive="false"
+      [itemsPerPage]="40"
+      previousText="&lsaquo;"
+      nextText="&rsaquo;"
+      firstText="&laquo;"
+      lastText="&raquo;"
+      [boundaryLinks]="true"
+      [(ngModel)]="pageNumber"
+      (pageChanged)="pageChanged($event)"
+    >
+    </pagination>
+  </div>
 </div>

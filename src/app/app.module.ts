@@ -52,6 +52,7 @@ import { ParticlesModule } from 'angular-particle';
     AngularFireDatabaseModule, // for database
     ParticlesModule,
   ],
+  entryComponents: [ModalComponent],
   providers: [],
   bootstrap: [AppComponent],
 })

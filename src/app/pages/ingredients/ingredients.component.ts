@@ -10,12 +10,13 @@ import AOS from 'aos';
 @Component({
   selector: 'app-ingredients',
   templateUrl: './ingredients.component.html',
-  styleUrls: ['./ingredients.component.scss']
+  styleUrls: ['./ingredients.component.scss'],
 })
 export class IngredientsComponent implements OnInit {
   public listIngredients: Array<Ingredient> = [];
-  public returnedArray: Array<Ingredient>
+  public returnedArray: Array<Ingredient>;
   public count: number;
+  public toggleLoader: boolean = false;
 
   @Output() addIngred = new EventEmitter<Ingredient>();
 
@@ -24,47 +25,48 @@ export class IngredientsComponent implements OnInit {
   private unsubscribe = new Subject();
   pageNumber: number = 1;
 
-
   constructor(
     private ingredientsServise: IngredientsService,
     private addServis: IngredientsService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     // this.returnedArray = this.listIngredients.slice(0, 40);
     this.getIngredientsAll();
-    AOS.init()
+    AOS.init();
+    this.toggleLoader = false;
   }
   pageChanged(event: PageChangedEvent): void {
     const startItem = (event.page - 1) * event.itemsPerPage;
     const endItem = event.page * event.itemsPerPage;
     this.returnedArray = this.listIngredients.slice(startItem, endItem);
     this.count = this.returnedArray.length;
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }
   async getIngredientsAll(): Promise<void> {
     // console.log("11111111", this.listIngredients)
     while (this.maxLengthArrayIngredients > this.ingredientId) {
-      const res = await this.ingredientsServise.getIngredientsById(this.ingredientId)
+      const res = await this.ingredientsServise
+        .getIngredientsById(this.ingredientId)
         .pipe(takeUntil(this.unsubscribe))
-        .subscribe(data => {
-          if (data.ingredients !== null) {
-            data.ingredients.forEach(el =>
-              this.listIngredients.push(el))
-
-          }
-          this.returnedArray = this.listIngredients.slice(0, 40);
-          this.count = this.returnedArray.length
-        },
-          error => console.error(error)
-        )
-      this.ingredientId++
+        .subscribe(
+          (data) => {
+            if (data.ingredients !== null) {
+              data.ingredients.forEach((el) => this.listIngredients.push(el));
+            }
+            this.returnedArray = this.listIngredients.slice(0, 40);
+            this.count = this.returnedArray.length;
+            this.toggleLoader = true;
+          },
+          (error) => console.error(error)
+        );
+      this.ingredientId++;
     }
-    this.listIngredients.sort()
+    this.listIngredients.sort();
   }
   openModalEdit(content: Ingredient): void {
-    this.addServis.addTo(content)
-    this.addServis.putToDataBase(content)
-    this.addIngred.emit(content)
+    this.addServis.addTo(content);
+    this.addServis.putToDataBase(content);
+    this.addIngred.emit(content);
   }
 }

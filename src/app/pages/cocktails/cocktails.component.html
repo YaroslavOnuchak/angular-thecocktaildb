@@ -79,8 +79,10 @@
       </div>
     </form>
   </div>
-
-  <div class="container">
+  <div class="wrap-loader">
+    <div class="lds-dual-ring" *ngIf="!toggleLoader"></div>
+  </div>
+  <div class="container" *ngIf="toggleLoader">
     <pagination
       *ngIf="returnedArray"
       class="justify-content-center align-bottom"
