@@ -3,29 +3,27 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ModalComponent } from 'src/app/pages/modal/modal/modal.component';
 import { Ingredient } from 'src/app/core/interfaces';
 import { IngredientsService } from 'src/app/core/services/ingredients/ingredients.service';
-
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit, OnChanges {
   modalRef: BsModalRef;
   // titleTodo: boolean;
   setModal: object;
-  listIng: Array<Ingredient> = []
-
+  listIng: Array<Ingredient> = [];
 
   constructor(
     private modalService: BsModalService,
-    private addServis: IngredientsService,
-  ) { }
+    private addServis: IngredientsService
+  ) {}
 
   ngOnInit(): void {
-    this.modalList()
+    this.modalList();
   }
-  ngOnChanges(): void {
-  }
+  ngOnChanges(): void {}
   modalList(): void {
     this.listIng = this.addServis.addTo();
 
@@ -37,14 +35,17 @@ export class NavbarComponent implements OnInit, OnChanges {
       // this.todoData = todo;
       this.modalRef = this.modalService.show(
         ModalComponent,
-        Object.assign({}, {
-          ignoreBackdropClick: false,
-          initialState: {
-            // titleTodo: this.titleTodo,
-            modalData: this.listIng,
-            // submit: this.updateTodo.bind(this)
+        Object.assign(
+          {},
+          {
+            ignoreBackdropClick: false,
+            initialState: {
+              // titleTodo: this.titleTodo,
+              modalData: this.listIng,
+              // submit: this.updateTodo.bind(this)
+            },
           }
-        })
+        )
       );
     }
   }

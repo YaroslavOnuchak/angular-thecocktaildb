@@ -94,7 +94,6 @@ export class ItemInfoComponent implements OnInit, OnDestroy {
           data.ingredients.forEach(el => {
             if (el !== null) {
               this.listIngrediends.push(el)
-
             }
           })
 

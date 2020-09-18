@@ -2,6 +2,10 @@
 body {
     font-family: 'Rye', 'Merriweather';
 
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+
     .wrap-loader {
         display        : flex;
         justify-content: center;

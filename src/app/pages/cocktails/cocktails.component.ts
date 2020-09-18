@@ -64,7 +64,6 @@ export class CoctailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.toggleLoader = false;
-    console.log('object', this.toggleLoader);
     this.getDrinksAll();
     AOS.init();
   }

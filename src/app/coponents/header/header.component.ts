@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
     this.myParams = {
       particles: {
         number: {
-          value: 500,
+          value: 100,
         },
         color: {
           value: '#ff00de',

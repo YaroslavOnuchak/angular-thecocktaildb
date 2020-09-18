@@ -7,6 +7,7 @@ import {
   animate,
 } from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -30,6 +31,16 @@ export class AppComponent {
     } else {
       let element = document.getElementById('navbar');
       element.classList.remove('sticky');
+    }
+  }
+  constructor(private router: Router) {}
+  @HostListener('window:resize', ['$event'])
+  onWindowResize(e) {
+    console.log('object', window.innerWidth);
+    if (window.innerWidth < 769) {
+      this.router.navigate(['cocktails']);
+    } else {
+      this.router.navigate(['double-page']);
     }
   }
 }
